@@ -39,7 +39,7 @@ end
 # A cell_index_to_field_mapper must be provided for the RubyXL backend to map values read from a column to a unique key in the yielded hash
 xlsx_reader = Spreadshot::Reader.new(
     backend: :ruby_xl,
-    cell_index_to_field_mapper: {0 => :H1, 1 => :H2, 2 => :H3, 3 => :H4}
+    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
 )
 xlsx_reader.read(path_to_sample_xlsx_file) do |row_index, row_data|
     puts "#{row_index} - #{row_data}"
@@ -102,7 +102,7 @@ reader = Spreadshot::Reader.new(backend: :smarter_csv)
 
 xlsx = Spreadshot::Backends::RubyXLBackend.new(
     worksheet_index: 0, 
-    cell_index_to_field_mapper: {0 => :H1, 1 => :H2, 2 => :H3, 3 => :H4}
+    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
 )
 reader.set_backend(xlsx)
 ```
