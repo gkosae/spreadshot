@@ -47,7 +47,9 @@ end
 # A cell_index_to_field_mapper must be provided for the RubyXL backend to map values read from a column to a unique key in the yielded hash
 xlsx_reader = Spreadshot::Reader.new(
   backend: :ruby_xl,
-  cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  backend_options: {
+    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  }
 )
 
 begin
@@ -69,9 +71,11 @@ end
 ```ruby
 xlsx_reader = Spreadshot::Reader.new(
   backend: :ruby_xl,
-  worksheet_index: 1, # Index of the worksheet to read from (defaults to 0, i.e. the first worksheet)
-  headers: false,
-  cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  backend_options: {
+    worksheet_index: 1, # Index of the worksheet to read from (defaults to 0, i.e. the first worksheet)
+    headers: false,
+    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  }
 )
 begin
   xlsx_reader.read(path_to_sample_xlsx_file) do |row_index, row_data|
@@ -125,7 +129,13 @@ reader.set_backend(xlsx)
 
 #OR
 
-reader.set_backend(:ruby_xl)
+reader.set_backend(
+  :ruby_xl,
+  {
+    headers: false,
+    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  }
+)
 ```
 
 
