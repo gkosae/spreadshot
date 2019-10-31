@@ -12,7 +12,7 @@ The name was inspired by the names of [battle chips from Megaman Battle Network 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'spreadshot'
+gem 'gkosae-spreadshot'
 ```
 
 And then execute:
@@ -20,8 +20,9 @@ And then execute:
     $ bundle
 
 Or install it yourself as:
-
-    $ gem install spreadshot
+```bash
+$ gem install 'gkosae-spreadshot'
+```
 
 ## Usage
 
