@@ -38,7 +38,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
-  byebug
+  byebug (~> 11.0)
   rake (~> 10.0)
   rspec (~> 3.0)
   spreadshot!

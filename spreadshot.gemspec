@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["George Osae"]
   spec.email         = ["coderwasp@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{Library for reading spreadsheets with support for multiple backends}
   spec.homepage      = "https://github.com/gkosae/spreadshot.git"
   spec.license       = "MIT"
 
@@ -33,6 +32,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "byebug", "~> 11.0"
   spec.add_development_dependency "rspec", "~> 3.0"
 end
