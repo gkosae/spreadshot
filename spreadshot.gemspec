@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "spreadshot/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "spreadshot"
+  spec.name          = "spreadshott"
   spec.version       = Spreadshot::VERSION
   spec.authors       = ["George Osae"]
   spec.email         = ["coderwasp@gmail.com"]
