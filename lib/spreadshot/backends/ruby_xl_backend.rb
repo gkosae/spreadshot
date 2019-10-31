@@ -31,9 +31,14 @@ module Spreadshot
           @worksheet_index = 0
         end
         
-        @cell_index_to_field_mapper = Hash(options[:cell_index_to_field_mapper])
-        raise ArgumentError, 'cell_index_to_field_mapper cannot be empty' if @cell_index_to_field_mapper.empty?
+        begin
+          @cell_index_to_field_mapper = Hash(options[:cell_index_to_field_mapper])
+        rescue TypeError
+          @cell_index_to_field_mapper = options[:cell_index_to_field_mapper]
+        end
+
         raise ArgumentError, 'cell_index_to_field_mapper is invalid' unless @cell_index_to_field_mapper.is_a?(Hash)
+        raise ArgumentError, 'cell_index_to_field_mapper cannot be empty' if @cell_index_to_field_mapper.empty?
       end
       
 
@@ -79,7 +84,7 @@ module Spreadshot
         end
   
         return nil
-      rescue Zip::Error => e
+      rescue => e
         raise Spreadshot::ReaderError, e.message
       end
     end

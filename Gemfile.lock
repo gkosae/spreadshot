@@ -9,10 +9,24 @@ GEM
   remote: https://rubygems.org/
   specs:
     byebug (11.0.1)
+    diff-lcs (1.3)
     mini_portile2 (2.4.0)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     rake (10.5.0)
+    rspec (3.9.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+    rspec-core (3.9.0)
+      rspec-support (~> 3.9.0)
+    rspec-expectations (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-support (3.9.0)
     rubyXL (3.3.33)
       nokogiri (>= 1.4.4)
       rubyzip (>= 1.1.6)
@@ -26,6 +40,7 @@ DEPENDENCIES
   bundler (~> 2.0)
   byebug
   rake (~> 10.0)
+  rspec (~> 3.0)
   spreadshot!
 
 BUNDLED WITH

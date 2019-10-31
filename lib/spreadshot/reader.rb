@@ -51,7 +51,7 @@ module Spreadshot
     #   reader.set_backend(csv_backend)
     def set_backend(backend, backend_options = {})
       @backend = (backend.is_a?(Spreadshot::Backends::ReaderBackend)) ? backend : build_backend(
-        backend, 
+        backend,
         backend_options
       )
 
