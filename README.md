@@ -1,9 +1,11 @@
 # Spreadshot
-A library for reading spreadsheets with support for multiple backends. This is an attempt to:
+A Ruby library for reading spreadsheets with support for multiple backends. This is an attempt to:
   - Provide a uniform interface for reading different formats of spreadsheets.
   - Reduce the amount of code changed when you decide to switch reader backends for any reason
 
 [SmarterCSV](https://github.com/tilo/smarter_csv) (for csv files) and [RubyXL](https://github.com/weshatheleopard/rubyXL) (for xlsx files) backends are provided out of the box.
+
+The name was inspired by the names of [battle chips from Megaman Battle Network 3](https://megaman.fandom.com/wiki/List_of_Mega_Man_Battle_Network_3_Battle_Chips).
 
 ## Installation
 
@@ -32,17 +34,27 @@ require 'spreadshot'
 Read spreadsheet with one of the provided backends
 ```ruby
 csv_reader = Spreadshot::Reader.new(backend: :smarter_csv)
-csv_reader.read(path_to_sample_csv_file) do |row_index, row_data|
+
+begin
+  csv_reader.read(path_to_sample_csv_file) do |row_index, row_data|
     puts "#{row_index} - #{row_data}"
+  end
+rescue Spreadshot::ReaderError
+  # Handle error
 end
 
 # A cell_index_to_field_mapper must be provided for the RubyXL backend to map values read from a column to a unique key in the yielded hash
 xlsx_reader = Spreadshot::Reader.new(
-    backend: :ruby_xl,
-    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  backend: :ruby_xl,
+  cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
 )
-xlsx_reader.read(path_to_sample_xlsx_file) do |row_index, row_data|
+
+begin
+  xlsx_reader.read(path_to_sample_xlsx_file) do |row_index, row_data|
     puts "#{row_index} - #{row_data}"
+  end
+rescue Spreadshot::ReaderError
+  # Handle error
 end
 
 # SAMPLE OUTPUT
@@ -55,13 +67,17 @@ end
 
 ```ruby
 xlsx_reader = Spreadshot::Reader.new(
-    backend: :ruby_xl,
-    worksheet_index: 1, # Index of the worksheet to read from (defaults to 0, i.e. the first worksheet)
-    headers: false,
-    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  backend: :ruby_xl,
+  worksheet_index: 1, # Index of the worksheet to read from (defaults to 0, i.e. the first worksheet)
+  headers: false,
+  cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
 )
-xlsx_reader.read(path_to_sample_xlsx_file) do |row_index, row_data|
+begin
+  xlsx_reader.read(path_to_sample_xlsx_file) do |row_index, row_data|
     puts "#{row_index} - #{row_data}"
+  end
+rescue Spreadshot::ReaderError
+  # Handle error
 end
 
 # SAMPLE OUTPUT
@@ -75,21 +91,21 @@ Read spreadsheet with a custom backend. The custom backend MUST inherit from `Sp
 Example:
 ```ruby
 class SmarterCSVBackend < Spreadshot::Backends::ReaderBackend
-    def initialize(options = {})
-        options ||= {}
-        options[:headers] = true
-        super(options)
-    end
+  def initialize(options = {})
+    options ||= {}
+    options[:headers] = true
+    super(options)
+  end
       
-    def read(path_to_spreadsheet)
-        SmarterCSV.process(path_to_spreadsheet) do |row|
-            current_row_data = row.first
-            yield(@current_row_index, current_row_data)
-            @current_row_index += 1
-        end
-    rescue => e
-        raise Spreadshot::ReaderError, e.message
+  def read(path_to_spreadsheet)
+    SmarterCSV.process(path_to_spreadsheet) do |row|
+      current_row_data = row.first
+      yield(@current_row_index, current_row_data)
+      @current_row_index += 1
     end
+  rescue => e
+    raise Spreadshot::ReaderError, e.message
+  end
 end
 
 csv_backend = Spreadshot::Backends::SmarterCSVBackend.new
@@ -101,10 +117,14 @@ Reader backends can also be switched dynamically with the `#set_backend` method
 reader = Spreadshot::Reader.new(backend: :smarter_csv)
 
 xlsx = Spreadshot::Backends::RubyXLBackend.new(
-    worksheet_index: 0, 
-    cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
+  worksheet_index: 0, 
+  cell_index_to_field_mapper: {0 => :h1, 1 => :h2, 2 => :h3, 3 => :h4}
 )
 reader.set_backend(xlsx)
+
+#OR
+
+reader.set_backend(:ruby_xl)
 ```
 
 
