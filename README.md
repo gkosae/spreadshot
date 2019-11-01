@@ -1,4 +1,4 @@
-# Spreadshot
+# Spreadshot [![Build Status](https://travis-ci.org/gkosae/spreadshot.svg?branch=master)](https://travis-ci.org/gkosae/spreadshot) [![Gem Version](https://badge.fury.io/rb/gkosae-spreadshot.svg)](https://badge.fury.io/rb/gkosae-spreadshot)
 A Ruby library for reading spreadsheets with support for multiple backends. This is an attempt to:
   - Provide a uniform interface for reading different formats of spreadsheets.
   - Reduce the amount of code changed when you decide to switch reader backends for any reason

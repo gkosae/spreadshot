@@ -1,4 +1,8 @@
 # Changelog
+
+## Unreleased
+- Integrated TravisCI and updated README with badges
+
 ## v0.1.1, 2019-11-01 (Maintenance Release)
 - Updated gemspec with CHANGELOG URI and documentation URI
 - Corrected RubyXL backend usage instructions in README
