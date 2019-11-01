@@ -1,5 +1,6 @@
 # Changelog
-## Unreleased
+## v0.1.1, 2019-11-01
+- Updated gemspec with CHANGELOG URI and documentation URI
 - Corrected RubyXL backend usage instructions in README
 - Updated README installation instructions with new gem name
 - Changed gem name from 'spreadshot' to 'gkosae-spreadshot' to circumvent rubygems typo protections
