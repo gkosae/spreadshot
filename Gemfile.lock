@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gkosae-spreadshot (0.1.0)
+    gkosae-spreadshot (0.1.1)
       rubyXL (~> 3.3.33)
       smarter_csv (~> 1.2.6)
 

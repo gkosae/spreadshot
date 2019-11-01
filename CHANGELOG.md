@@ -1,5 +1,5 @@
 # Changelog
-## v0.1.1, 2019-11-01
+## v0.1.1, 2019-11-01 (Maintenance Release)
 - Updated gemspec with CHANGELOG URI and documentation URI
 - Corrected RubyXL backend usage instructions in README
 - Updated README installation instructions with new gem name
