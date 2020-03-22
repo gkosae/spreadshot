@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.1.2, 2020-22-03 (Maintenance Release)
 - Merged dependabot's security updates
 - Integrated Coveralls and updated README with badges
 - Integrated TravisCI and updated README with badges
