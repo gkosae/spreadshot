@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Merged dependabot's security updates
 - Integrated Coveralls and updated README with badges
 - Integrated TravisCI and updated README with badges
 
