@@ -1,4 +1,6 @@
 # Changelog
+## v0.1.3, 2020-28-07 (Maintenance Release)
+- Merged dependabot's security updates
 
 ## v0.1.2, 2020-22-03 (Maintenance Release)
 - Merged dependabot's security updates
